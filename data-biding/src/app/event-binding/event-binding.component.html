@@ -1,0 +1,42 @@
+<section>
+    <article>
+        <h3>Event BINDING</h3>
+        <div>
+            <button (click)="botaoClicado()"
+                class="btn btn-primary">Me clique!
+            </button>
+            <br/><br/>
+            <input type="text"
+                (keyup)="onKeyup($event)"
+                (keyup.enter)="salvarValor($any($event.target).value)"
+                (blur)="salvarValor(campoInput.value)"
+                #campoInput
+            />
+            <p>Valor atual: {{ valorAtual }}</p>    
+            <p>Valor atual2: {{ valorSalvo }}</p> 
+            <br>
+            <span
+                (mouseover)="onMouseOverOut()"
+                (mouseout)="onMouseOverOut()"
+                [class.highlight]="isMouseOver"
+            >
+            Passe o mouse sobre mim
+            </span>
+        </div>
+    </article>
+</section>
+
+<!--
+    $event
+    para pega o valor inputado no campo texto
+    no angular nos tbm podemos passar os eventos para os metodos com $event captura o evento no metodo onKeyup(evento)
+-->
+
+<!--
+    Pra quem estiver com problemas de compilação ao passar apenas o valor do evento para os metódos, basta apenas colocar explicitamente a tipagem any:
+
+(keyup.enter)=salvarValor($any($event.target).value)"
+-->
+<!-- pra que usar a variavel de template
+    Opa Caio então fiquei com a mesma dúvida que você, após procurar um pouco achei a solução. Na verdade não é indicado pela documentação do Angular a utilização do $event, pois acaba-se passando todo o DOM como parâmetro para o método. Criar uma variável de template assim como ela fez no final é o mais indicado, você pode ler mais sobre caso não tenha entendido neste link: https://angular.io/guide/user-input. Obs: Na página do link procure por "Get user input from a template reference variable".
+-->

@@ -1,0 +1,30 @@
+
+<section class="two-way-binding">
+    <article>
+        <h3>Two-way data binging</h3>
+        <div>
+            <input type="text"
+                [value] = "nome"
+                (input)="nome = $any($event.target).value"
+            >
+            <br>
+            <input type="text" #valorInput
+                [ngModel] = "nome"
+                (ngModelChange)="nome = $any(valorInput)"
+            >
+            <br>
+            <input type="text"  [(ngModel)]="nome">
+            <p>você digitou o nome: {{ nome }}</p>
+        </div>
+        <div>
+            <p>Meu nome é <strong>{{ pessoa.nome }}</strong> e tenho <strong>{{ pessoa.idade }}</strong> anos de idade</p>
+            <input type="text" [(ngModel)]="pessoa.nome">
+            <input type="text" [(ngModel)]="pessoa.idade">
+        </div>
+    </article>
+</section>
+
+<!--[ngModel]
+    para funcionar precisa importar isso no app module
+    import { FormsModule } from '@angular/forms';
+-->

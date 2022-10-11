@@ -1,0 +1,38 @@
+<div>
+    <div>
+        <h4>Styles com property binding (style binding)</h4>
+        <button
+            [style.backgroundColor]="fundo ? 'blue' : 'red'"
+            [style.color]="fundo ? 'white' : 'black'"
+            [style.fontWeight]="fundo ? 'bold' : 'normal'"
+            [style.fontSize]="tamanhoFonte + 'px'"
+            (click)="mudaFundo()"
+        >
+        Mudar Fundo
+        </button>
+    </div>
+
+    <div>
+        <input type="number" [(ngModel)]="tamanhoFonte">
+    </div>
+  
+    <div>
+        <h4>Usando o ngStyle</h4>
+        <button
+            [ngStyle]="{
+                'backgroundColor' : (fundo ? 'purple' : 'green'),
+                'color' : fundo ? 'white' : 'black',
+                'fontWeight' : (fundo ? 'normal' : 'bold'),
+                'fontSize' : tamanhoFonte + 'px'
+            }"
+            (click)="mudaFundo()"
+        >
+            Mudar Fundo
+        </button>
+    </div>
+        
+</div>
+
+<!--
+    para usar o [(ngModel)] tem q importar formsModule import { FormsModule } from '@angular/forms';
+-->

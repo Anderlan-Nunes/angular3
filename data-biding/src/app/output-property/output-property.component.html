@@ -1,0 +1,18 @@
+<div>
+
+    <div class="esquerda">
+        <h3>Output Properties</h3>
+        <button (click)="valorDecrementa()">-</button>
+        <input type="text" readonly [value]="valorInput">
+        <button (click)="valorIncrementa()">+</button>
+    </div>
+    <div class="direita">
+        <h3>Acesso ao DOM e ao Template com ViewChild</h3>
+        <button (click)="novoValorDecrementa()">-</button>
+        <input type="text" readonly  #campoInput>
+        <button (click)="novoValorIncrementa()">+</button>
+        
+    </div>
+    <p>sou uma input perdida</p>
+    <input type="text" readonly [(ngModel)]="valorInput">
+</div>

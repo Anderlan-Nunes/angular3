@@ -1,0 +1,35 @@
+<h3>*ngIf</h3>
+<div *ngIf="cursos.length == 0; else comCursos">
+    <p>se for true aparece aki se for false ela eh destruida</p>
+</div>
+<ng-template #comCursos>
+    apareceu no else pq foi false o true foi destruido
+</ng-template>
+
+<div *ngIf="mostrarCursos, else naoMostrarCursos">
+    Lista de cursos aki
+</div>
+<div>
+    <ng-template #naoMostrarCursos>
+        nao exitem cursos para serem mostrados
+    </ng-template>
+</div>
+<br>
+<button (click)="onMostrarCursos()">mostrar/nao mostrar cursos</button>
+
+<div>
+    <h3>Com hidenn como alternativa para não ter q destruir o DOM</h3>
+    <div [hidden]="!mostrarCursos">
+        lista de curso aki do hidden
+    </div>
+    <div [hidden]="mostrarCursos">
+        não existe cursos aki do hidden
+    </div>
+</div>
+
+
+<!-- hidenn 
+    quando nega o elemento na diretiva a diretiva acaba sendo destruida e ficar mechendo no elemento do dom eh mto custoso
+    uma alternativa a isso eh usar a propriedade do html hidden para nao ficar destruindo elemento do DOM
+    hidden nao usar qndo envolve segurança
+-->

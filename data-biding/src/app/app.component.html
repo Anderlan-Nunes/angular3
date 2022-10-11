@@ -1,0 +1,17 @@
+<app-data-binding></app-data-binding>
+<app-life-cycle [valorInicial]="valor" *ngIf="!deletarCiclo"></app-life-cycle><!--ngig começa como nao false qndo clica no botao ele fica nao true-->
+<button (click)="mudarValor()">Mudar Valor</button>
+<button (click)="destruirCiclo()">Destuir!</button>
+
+<!-- ngIf
+quando deletarCiclo for nao false eu vou mostrar o componente app-life-cycle
+quando nao deletarCiclo eu vou mostrar o componente app-life-cycle qndo peder pra deletar cilclo entao esse componente vai ser destruido
+-->
+
+<!--
+    
+
+<app-class-style-binding></app-class-style-binding>
+<app-event-binding></app-event-binding>
+<app-two-way-data-binding></app-two-way-data-binding>
+-->

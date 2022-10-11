@@ -1,0 +1,18 @@
+<div>
+    <div>
+        <h4>operador-elvis!</h4>
+        <h6>conhecido como um operador q nos fornece uma maneira de fazer um navegacao segura entre os objetos</h6>
+        <p>Descrição: {{ tarefa.desc }}</p>
+        <p>Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : ''}}</p>
+        <p>Descrição: {{ outraTarefa.desc }}</p>
+        <p>Responsável: {{ outraTarefa.responsavel != null ? outraTarefa.responsavel.nome : ''}}</p>
+    </div>
+
+    <div>
+        <h4>Com operador elvis</h4>
+        <p>Responsavel: {{ tarefa.responsavel?.nome }}</p>
+        <p>Responsavel: {{ outraTarefa.responsavel?.nome }}</p>
+        <p>Responsavel elvis: {{ tarefaElvis.responsavel?.usuario?.nome}}</p>
+        <p>Responsavel elvis: {{ outraTarefaElvis.responsavel?.usuario?.nome}}</p>
+    </div>
+</div>

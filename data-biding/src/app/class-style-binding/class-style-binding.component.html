@@ -1,0 +1,79 @@
+<section>
+    <article>
+        <h3>Class e Style Binding</h3>
+        <div>
+            selecione uma valuee:
+            <select #classe (change)="0">
+                <option value="alert-primary">primary</option>
+                <option value="alert-secondary">secondary</option>
+                <option value="alert-success">success</option>
+                <option value="alert-danger">danger</option>
+                <option value="alert-warning">warning</option>
+                <option value="alert-info">info</option>
+                <option value="alert-light">light</option>
+                <option value="alert-dark">Dark</option>
+            </select>
+            <br><br>
+            <div class="alert {{ classe.value }}" role="alert">
+                Texto colorido conforme valor do combobox.
+            </div>
+            
+            <div class="alert alert-warning " role="alert" [style.display]="classe.value == 'alert-light' ? 'block' : 'none'">
+                só aparece qndo seleciona light
+            </div>
+
+            <div class="alert " role="alert" [class.alert-primary]="classe.value == 'alert-primary'">
+                primary
+            </div>
+            <div class="alert " role="alert" [class.alert-secondary]="classe.value == 'alert-secondary'">
+                secondary
+            </div>
+            <div class="alert " role="alert" [class.alert-success]="classe.value == 'alert-success'">
+                success
+            </div>
+            <div class="alert " role="alert" [class.alert-danger]="classe.value == 'alert-danger'">
+                danger
+            </div>
+            <div class="alert " role="alert" [class.alert-warning]="classe.value == 'alert-warning'">
+                warning
+            </div>
+            <div class="alert " role="alert" [class.alert-info]="classe.value == 'alert-info'">
+                info
+            </div>
+            <div class="alert " role="alert" [class.alert-light]="classe.value == 'alert-light'">
+                light
+            </div>
+            <div class="alert " role="alert" [class.alert-dark]="classe.value == 'alert-dark'">
+                dark
+            </div>
+
+        </div>
+    </article>
+</section>
+
+<!--
+    <div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+</div>
+<div class="alert alert-secondary" role="alert">
+  A simple secondary alert—check it out!
+</div>
+<div class="alert alert-success" role="alert">
+  A simple success alert—check it out!
+</div>
+<div class="alert alert-danger" role="alert">
+  A simple danger alert—check it out!
+</div>
+<div class="alert alert-warning" role="alert">
+  A simple warning alert—check it out!
+</div>
+<div class="alert alert-info" role="alert">
+  A simple info alert—check it out!
+</div>
+<div class="alert alert-light" role="alert">
+  A simple light alert—check it out!
+</div>
+<div class="alert alert-dark" role="alert">
+  A simple dark alert—check it out!
+</div>
+-->

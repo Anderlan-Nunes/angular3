@@ -1,0 +1,39 @@
+<section class="input-outupt-properties" >
+    <article>
+        <h3>Input/Output Properties</h3>
+        <app-input-properties [nome]="nomeDoCurso"></app-input-properties> <!--só aceitou a  propriedade nome por causa do @input no seletor-->
+    </article>
+    <article>
+        <app-output-property 
+            [valorInput]="valorInicial"
+            (mudouValor)="onMudouValor($event)"
+            (mudouNovoValor)="onMudouNovoValor($event)"
+        ></app-output-property><!-- assim consegue usar o valorInicial setado no databinding ---valorInput variavel do output-propety e valorInicial variavel do data-binding-->
+    </article>
+</section>
+<section class="inter-property">
+    <article class="interpolation">
+        <h3>Interpolation</h3>
+        <p>string renderizada com interpolação: {{ url }}</p>
+        <p>um mais um eh: {{ 1+1 }}</p>
+        <p>chamando método getValor <br> um mais um não eh: {{ 1 + 1  + getValor() }}</p>
+        <p>Curso de Angular e gosto do curso: {{ cursoAngular && getCurtirCurso() }}</p>
+    </article>
+
+    <article class="property-binding">
+        <h3>Property Binding</h3>
+        <img src="{{ urlImagem }}" ><br>
+        <img [src]="urlImagem" ><br>
+        <img bind-src="urlImagem" >
+    </article>
+</section>
+
+
+
+<!--
+    {{ interplatation }} eh bom para concatenar texto dentro de paragrafos e div e etc. usa quando nao tem um propriedade especifica (textContent)
+-->
+<!--
+    o @Input valorInput do output-property recebe o valor ValorInicial do pai data-binding
+    no @Output a variavel mudoValor do filho outuput-property passar o valor pro pai data-biding
+-->

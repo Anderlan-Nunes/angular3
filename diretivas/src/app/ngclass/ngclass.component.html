@@ -1,0 +1,32 @@
+<div>
+    <h1>diretivas de atributo</h1>
+    <div><i class="bi bi-star"></i></div>
+    <div><i class="bi bi-star-fill"></i></div>
+
+    <div>
+        <h2>ultilizndo o class binding (proprety binding de classe)</h2>
+        <i  class="bi" 
+            [class.bi-star]="mostrarFavorito"
+            [class.bi-star-fill]="!mostrarFavorito" 
+            (click)="onMostraFavorito()">
+        </i>
+    </div>
+
+    <div>
+        <h2>ultilizando a diretiva ngClass-</h2>
+        <h1>
+            <i class="bi"
+                [ngClass]="{
+                    'bi-star': mostrarFavorito,
+                    'bi-star-fill' : !mostrarFavorito
+                }"
+                (click)="onMostraFavorito()"
+            ></i>
+        </h1>
+    </div>
+
+</div>
+
+<!--
+    qndo temos mtos class binding eh melhor ultilizar a diretiva ngClass- passa um objeto com todas as classes que devemos usar
+-->
