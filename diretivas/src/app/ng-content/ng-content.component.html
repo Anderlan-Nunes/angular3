@@ -1,0 +1,36 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        <ng-content select=".titulo"></ng-content>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <ng-content select=".l1"></ng-content>
+        </li>
+        <li class="list-group-item">
+            <ng-content select=".l2"></ng-content>
+        </li>
+        <li class="list-group-item">
+            <ng-content select=".l3"></ng-content>
+        </li>
+    </ul>
+
+</div>
+<br>
+<ng-content></ng-content>
+<!--
+    <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      Featured
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+  </div>
+  -->
+
+<!--
+    O seletor é só em nível de classe, né? Não há possibilidade, por exemplo, de usar seletor de id: <ng-content select = "#primeiro_pedaco"></ng-content>, né?
+    Que eu saiba somente por classe. Pesquisei agora com sua pergunta e não achei referências com uso de id!
+  -->

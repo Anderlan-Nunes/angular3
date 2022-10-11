@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-primary">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link"
+            [class.active]="aba == 'home'"
+            (click)="aba='home'">Home</a>
+        <a class="nav-item nav-link"
+            [class.active]="aba == 'features'"
+            (click)="aba = 'features'">Features</a>
+        <a class="nav-item nav-link" 
+            [class.active]="aba == 'pricing'"
+            (click)="aba = 'pricing'">Pricing</a>
+    </div>
+</nav>
+<div class="container" [ngSwitch]="aba">
+    <p *ngSwitchCase="'features'">modo mapa ativado</p>
+    <p *ngSwitchCase="'pricing'">modo lista ativado</p>
+    <p *ngSwitchDefault="'home'">modo home ativado</p>
+</div>
+
+
+
+<!--nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home</a>
+        <a class="nav-item nav-link " href="#">Features</a>
+        <a class="nav-item nav-link " href="#">Pricing</a>
+    </div>
+</nav-->
+
+<!--
+    Contribuindo um pouco....
+Pode ser feito também com as diretivas, criei ex: home, quem somos, produtos e contatos tudo componentes ai fiz assim
+<nav>
+   <div class="nav-wrapper">
+     <a href="#" class="brand-logo">Logo</a>
+     <ul id="nav-mobile" class="right hide-on-med-and-down">
+       <li [class.active]="aba == 'home'"><a (click)="aba = 'home'">Home</a></li>
+       <li [class.active]="aba == 'quem somos'"><a (click)="aba = 'quem somos'">Quem Somos</a></li>
+       <li [class.active]="aba == 'produtos'"><a (click)="aba = 'produtos'">Produtos</a></li>
+       <li [class.active]="aba == 'contatos'"><a (click)="aba = 'contatos'">Contatos</a></li>
+     </ul>
+   </div>
+ </nav>
+
+ <div [ngSwitch]="aba">
+   <app-home *ngSwitchDefault></app-home>
+   <app-quem-somos *ngSwitchCase="'quem somos'"></app-quem-somos>
+   <app-produtos *ngSwitchCase="'produtos'"></app-produtos>
+   <app-contato *ngSwitchCase="'contatos'"></app-contato>
+ </div>
+
+no meu caso estou utilizando o materialize, gostei desse carinha
+
+<nav class="navbar navbar-expand-sm navbar-light bg-primary">
+-->
