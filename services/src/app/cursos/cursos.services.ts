@@ -12,4 +12,8 @@ export class CursosServices {
         return this.cursos;
     }
 
+    setCurso(curso: string){
+        this.cursos.push(curso);
+    }
+
 }
