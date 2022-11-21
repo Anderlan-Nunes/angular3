@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.header a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color:blue;
+}
+
+.header .space {
+    padding: 7px;
+}
+
+.header span > a:hover{
+    text-decoration-line: underline;
+}
