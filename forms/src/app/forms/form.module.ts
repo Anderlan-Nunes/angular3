@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { DataFormComponent } from './data-form/data-form.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import { MaterialModule } from '../material/material.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +14,13 @@ import { TemplateFormComponent } from './template-form/template-form.component';
     TemplateFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    FormsModule
+  ],
+  exports: [
+    DataFormComponent,
+    TemplateFormComponent
   ]
 })
 export class FormModule { }

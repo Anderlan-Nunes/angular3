@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateFormComponent implements OnInit {
 
+  Inome: any;
+Busuario: any = true;
+value: any = "clear";
+
   constructor() { }
 
   ngOnInit(): void {
