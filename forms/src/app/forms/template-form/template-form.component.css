@@ -14,15 +14,21 @@
     width: 200px;
 }
 
-button {
+button .matSuffix {
     background-color: white;
     border-color: transparent;
     border-radius: 50%;
 
 }
 
+
 /*video 78*/
 
 .ng-invalid.ng-touched:not(form, input) {
     border: 1px solid red;
 }
+
+.enviar:hover{
+    background-color: rgba(235, 235, 235, 0.904);
+}
+

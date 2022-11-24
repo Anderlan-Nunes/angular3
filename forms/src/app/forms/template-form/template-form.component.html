@@ -4,18 +4,18 @@
 
         <input type="text" name="name" matInput placeholder="Digite seu nome " [(ngModel)]="usuario.nome" required  #nome>
         
-        <button *ngIf="usuario.nome" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.nome=''" >
+        <button class="enviar" *ngIf="usuario.nome" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.nome=''" >
 
             <mat-icon >close</mat-icon>
 
         </button>
     </mat-form-field>
     
-    <div>
+    <!--div>
 
         <p>{{ nome.className }}</p>
 
-    </div>
+    </div-->
     <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input type="email" name="email" matInput placeholder="Ex email@email.com" [(ngModel)]="usuario.email" required email>
@@ -37,10 +37,37 @@
         </mat-error>
     </mat-form-field>
   
-    <button type="submit">enviar</button>
+    <div><button mat-raised-button type="submit">enviar</button></div>
 
 </form>
 
+<div>
+    <div>
+        <form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div class="example-full-width">
+                <label for="name2">Nome2</label>
+                <input type="text" name="name2" matInput placeholder="Digite seu nome2 " [(ngModel)]="usuario.nome2" required  #nome2="ngModel">
+                <!--se o nome for inválido e ele for tocado...-->
+                <div *ngIf="!nome2.valid && nome2.touched"> <!--pode usar hiden com Property binding  também-->
+                    O campo nome2 eh obrigatório!
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <!--tratando err usando um Property binding de class (com a classa do material)-->
+            <div class="example-full-width" [class.hasError]>
+                <label for="name2">Nome2</label>
+                <input type="text" name="name2" matInput placeholder="Digite seu nome2 " [(ngModel)]="usuario.nome2" required  #nome2="ngModel">
+                <!--se o nome for inválido e ele for tocado...-->
+                <div *ngIf="!nome2.valid && nome2.touched"> <!--pode usar hiden com Property binding  também-->
+                    O campo nome2 eh obrigatório!
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <!--form class="example-form">
     <mat-form-field class="example-full-width">
