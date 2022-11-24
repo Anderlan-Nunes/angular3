@@ -1,16 +1,39 @@
-<form class="example-form">
+<form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <mat-form-field class="example-full-width">
-        <mat-label>Nome*:</mat-label>
-        <input matInput placeholder="Ex. Fulano Ciclano Perando " [(ngModel)]="value">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" >
-            <mat-icon>close</mat-icon>
+        <mat-label>Nome</mat-label>
+        <input type="text" name="name" matInput placeholder="Digite seu nome " [(ngModel)]="usuario.nome" required>
+        <button *ngIf="usuario.nome" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.nome=''" >
+            <mat-icon >close</mat-icon>
         </button>
     </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" name="email" matInput placeholder="Ex email@email.com" [(ngModel)]="usuario.email" required email>
+        <button *ngIf="usuario.email" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.email=''" >
+            <mat-icon >close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+  
+    <button type="submit">enviar</button>
 
 </form>
 
 
-<form class="example-form">
+<!--form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Favorite food</mat-label>
       <input matInput placeholder="Ex. Pizza" value="Sushi">
@@ -24,5 +47,5 @@
     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
         <mat-icon>close</mat-icon>
     </button>
-</mat-form-field>
+</mat-form-field-->
 

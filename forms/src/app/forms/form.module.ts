@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { DataFormComponent } from './data-form/data-form.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { MaterialModule } from '../material/material.module';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule, } from '@angular/forms';
+//import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +16,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     DataFormComponent,
