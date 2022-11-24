@@ -1,12 +1,21 @@
 <form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
     <mat-form-field class="example-full-width">
         <mat-label>Nome</mat-label>
-        <input type="text" name="name" matInput placeholder="Digite seu nome " [(ngModel)]="usuario.nome" required>
+
+        <input type="text" name="name" matInput placeholder="Digite seu nome " [(ngModel)]="usuario.nome" required  #nome>
+        
         <button *ngIf="usuario.nome" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.nome=''" >
+
             <mat-icon >close</mat-icon>
+
         </button>
     </mat-form-field>
+    
+    <div>
 
+        <p>{{ nome.className }}</p>
+
+    </div>
     <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input type="email" name="email" matInput placeholder="Ex email@email.com" [(ngModel)]="usuario.email" required email>
@@ -26,7 +35,7 @@
         <mat-error *ngIf="emailFormControl.hasError('required')">
           Email is <strong>required</strong>
         </mat-error>
-      </mat-form-field>
+    </mat-form-field>
   
     <button type="submit">enviar</button>
 
