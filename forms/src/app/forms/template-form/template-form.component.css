@@ -28,7 +28,7 @@ button .matSuffix {
     border: 1px solid red;
 }
 
-.enviar:hover{
+.limpar:hover{
     background-color: rgba(235, 235, 235, 0.904);
 }
 

@@ -1,13 +1,14 @@
-<form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+<!--Nós tem a variável local "f" sendo associada ao crontrole do formulário(ngForm) do angular e no evento de submit estamos passando essa variável f-->
+<form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)" autocomplete="off">
     <mat-form-field class="example-full-width">
         <mat-label>Nome</mat-label>
 
         <input type="text" name="name" matInput placeholder="Digite seu nome " [(ngModel)]="usuario.nome" required  #nome>
         
-        <button class="enviar" *ngIf="usuario.nome" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.nome=''" >
+        <button class="limpar" *ngIf="usuario.nome" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.nome=''" >
 
             <mat-icon >close</mat-icon>
-
+ 
         </button>
     </mat-form-field>
     
@@ -37,7 +38,9 @@
         </mat-error>
     </mat-form-field>
   
-    <div><button mat-raised-button type="submit">enviar</button></div>
+    <div>
+        <button mat-raised-button type="submit" [disabled]="f.invalid || emailFormControl.invalid ">enviar</button>
+    </div><!--o button do html possui uma propriedade disabled-->
 
 </form>
 
