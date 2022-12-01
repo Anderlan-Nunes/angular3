@@ -44,32 +44,39 @@
 
 </form>
 
-<div>
-    <div>
-        <form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-            <div class="example-full-width">
-                <label for="name2">Nome2</label>
-                <input type="text" name="name2" matInput placeholder="Digite seu nome2 " [(ngModel)]="usuario.nome2" required  #nome2="ngModel">
-                <!--se o nome for inválido e ele for tocado...-->
-                <div *ngIf="!nome2.valid && nome2.touched"> <!--pode usar hiden com Property binding  também-->
-                    O campo nome2 eh obrigatório!
+<div class="novoFormContainer">
+    
+    <form class="example-form" #g="ngForm" (ngSubmit)="onSubmit(g)">
+        <div class="novoFormBox">
+            <div>
+                <div class="example-full-width">
+                    <label for="name2">Nome2</label>
+                    <input type="text" name="name2" matInput placeholder="Digite seu nome2 " [(ngModel)]="usuario.nome2" required  #nome2="ngModel">
+                    <!--se o nome for inválido e ele for tocado...-->
+                    <div *ngIf="!nome2.valid && nome2.touched"> <!--pode usar hiden com Property binding  também-->
+                        O campo nome2 eh obrigatório!
+                    </div>
+                </div>
+        
+            </div>
+            <div>
+                <!--tratando err usando um Property binding de class (com a classa do material)-->
+                <div class="example-full-width">
+                    <label for="email3">email3</label>
+                    <input type="email" name="email3" matInput placeholder="Digite seu email " [(ngModel)]="usuario.email3" required  #email="ngModel" email>
+                    <!--se o nome for inválido e ele for tocado...-->
+                    <div [hidden]="!(email.invalid && email.touched)"> <!--pode usar hiden com Property binding  também-->
+                        O campo email eh obrigatório!
+                    </div>
                 </div>
             </div>
-        </form>
-    </div>
-    <div>
-        <form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-            <!--tratando err usando um Property binding de class (com a classa do material)-->
-            <div class="example-full-width" [class.hasError]>
-                <label for="name2">Nome2</label>
-                <input type="text" name="name2" matInput placeholder="Digite seu nome2 " [(ngModel)]="usuario.nome2" required  #nome2="ngModel">
-                <!--se o nome for inválido e ele for tocado...-->
-                <div *ngIf="!nome2.valid && nome2.touched"> <!--pode usar hiden com Property binding  também-->
-                    O campo nome2 eh obrigatório!
-                </div>
+            <div>
+                <button mat-raised-button type="submit" [disabled]="g.invalid">enviar</button>
             </div>
-        </form>
-    </div>
+        </div>
+            <app-form-debug [form]="g"></app-form-debug><!-- proprety binding form recebe o controle de formulario ngForm e manda para o debug pq la tem um Input-->
+    </form>
+
 </div>
 
 <!--form class="example-form">

@@ -1,0 +1,16 @@
+<div class="boxDebug" *ngIf="form" >
+   
+    <div>
+        Detalhes do form
+    </div>
+    <pre>
+        Form válido: {{ form.valid }}
+    </pre>
+    <pre>
+        Form submetido: {{ form.submitted }}
+    </pre>
+    <pre>
+        Valores: <p> {{ form.value | json }} <!-- usou o pipe json pq esse valor é um objeto pra mostrar o valor na tela precisa usar o pipi json-->
+    </pre>
+   
+</div>

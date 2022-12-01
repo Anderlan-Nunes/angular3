@@ -32,3 +32,18 @@ button .matSuffix {
     background-color: rgba(235, 235, 235, 0.904);
 }
 
+.novoFormContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.novoFormBox{
+    width: 100%;
+    background-color: rgba(127, 255, 212, 0.267);
+    border: 1px solid blue;
+    margin-top: 30px;
+    padding: 10px;
+}
