@@ -37,6 +37,7 @@ matcher = new MyErrorStateMatcher();
 
   onSubmit(form:any){
     console.log(this.usuario.nome)
+    console.log(this.usuario.email)
     console.log(form)
    
   }

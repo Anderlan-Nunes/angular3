@@ -2,13 +2,18 @@
 <form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)" autocomplete="off">
     <mat-form-field class="example-full-width">
         <mat-label>Nome</mat-label>
-
-        <input type="text" name="name" matInput placeholder="Digite seu nome " [(ngModel)]="usuario.nome" required  #nome>
+        <input type="text" name="name" matInput placeholder="Digite seu nome " [(ngModel)]="usuario.nome" required  #nome>        
         
         <button class="limpar" *ngIf="usuario.nome" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.nome=''" >
-
             <mat-icon >close</mat-icon>
- 
+        </button>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" name="email" matInput placeholder="Ex email@email.com" [(ngModel)]="usuario.email" required #email>
+        <button *ngIf="usuario.email" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.email=''" >
+            <mat-icon >close</mat-icon>
         </button>
     </mat-form-field>
     
@@ -17,13 +22,6 @@
         <p>{{ nome.className }}</p>
 
     </div-->
-    <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input type="email" name="email" matInput placeholder="Ex email@email.com" [(ngModel)]="usuario.email" required email>
-        <button *ngIf="usuario.email" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.email=''" >
-            <mat-icon >close</mat-icon>
-        </button>
-    </mat-form-field>
 
     <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
@@ -40,11 +38,35 @@
   
     <div>
         <button mat-raised-button type="submit" [disabled]="f.invalid || emailFormControl.invalid ">enviar</button>
-    </div><!--o button do html possui uma propriedade disabled-->
+    </div><!--o button do html possui uma propriedade disabled//-->
+
 
 </form>
+<form>
+    <div>
+        <div class="example-container"> 
+            
+            <mat-form-field appearance="fill">
+              <mat-label>Address type:</mat-label>
+              <mat-select>
+                <mat-option value="option">home</mat-option>
+                <mat-option value="option">work</mat-option>
+                <mat-option value="option">parents</mat-option>
+                <mat-option value="option">outros</mat-option>
+              </mat-select>
+              <mat-hint align="end">home, work, parents...</mat-hint>
+            </mat-form-field>
 
-<div class="novoFormContainer">
+            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                <mat-label>address:</mat-label>
+                <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+              </mat-form-field>
+        </div>
+          
+    </div>
+</form>
+<!--div class="novoFormContainer">
     
     <form class="example-form" #g="ngForm" (ngSubmit)="onSubmit(g)">
         <div class="novoFormBox">
@@ -52,20 +74,20 @@
                 <div class="example-full-width">
                     <label for="name2">Nome2</label>
                     <input type="text" name="name2" matInput placeholder="Digite seu nome2 " [(ngModel)]="usuario.nome2" required  #nome2="ngModel">
-                    <!--se o nome for inválido e ele for tocado...-->
-                    <div *ngIf="!nome2.valid && nome2.touched"> <!--pode usar hiden com Property binding  também-->
+                    <!--se o nome for inválido e ele for tocado...
+                    <div *ngIf="!nome2.valid && nome2.touched"> <!--pode usar hiden com Property binding  também
                         O campo nome2 eh obrigatório!
                     </div>
                 </div>
         
             </div>
             <div>
-                <!--tratando err usando um Property binding de class (com a classa do material)-->
+                <!--tratando err usando um Property binding de class (com a classa do material)
                 <div class="example-full-width">
                     <label for="email3">email3</label>
                     <input type="email" name="email3" matInput placeholder="Digite seu email " [(ngModel)]="usuario.email3" required  #email="ngModel" email>
-                    <!--se o nome for inválido e ele for tocado...-->
-                    <div [hidden]="!(email.invalid && email.touched)"> <!--pode usar hiden com Property binding  também-->
+                    <!--se o nome for inválido e ele for tocado...
+                    <div [hidden]="!(email.invalid && email.touched)"> <!--//pode usar hiden com Property binding  também
                         O campo email eh obrigatório!
                     </div>
                 </div>
@@ -74,24 +96,14 @@
                 <button mat-raised-button type="submit" [disabled]="g.invalid">enviar</button>
             </div>
         </div>
-            <app-form-debug [form]="g"></app-form-debug><!-- proprety binding form recebe o controle de formulario ngForm e manda para o debug pq la tem um Input-->
+            <app-form-debug [form]="g"></app-form-debug><!--// proprety binding form recebe o controle de formulario ngForm e manda para o debug pq la tem um Input
     </form>
 
+</div!-->
+
+<div>
+    <app-form-debug [form]="f"></app-form-debug>
 </div>
 
-<!--form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Favorite food</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="Sushi">
-    </mat-form-field>
-  
-</form>
 
-<mat-form-field class="example-form-field">
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" [(ngModel)]="value">
-    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-    </button>
-</mat-form-field-->
 
