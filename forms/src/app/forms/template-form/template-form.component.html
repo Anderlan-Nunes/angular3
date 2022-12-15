@@ -1,6 +1,6 @@
 <!--Nós tem a variável local "f" sendo associada ao crontrole do formulário(ngForm) do angular e no evento de submit estamos passando essa variável f-->
 <form class="example-form" #f="ngForm" (ngSubmit)="onSubmit(f)" autocomplete="off">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Nome</mat-label>
         <input type="text" name="nome" matInput placeholder="Digite seu nome " [(ngModel)]="usuario.nome" required  #nome>        
         
@@ -9,7 +9,7 @@
         </button>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Email</mat-label>
         <input type="email" name="email" matInput placeholder="Ex email@email.com" [(ngModel)]="usuario.email" required #email>
         <button *ngIf="usuario.email" matSuffix mat-icon-button aria-label="Clear" (click)="usuario.email=''" >
@@ -27,7 +27,10 @@
         <div class="example-container">     
             <mat-form-field appearance="fill">
               <mat-label>Address type:</mat-label>
-              <mat-select [(value)]="selected" >
+              <mat-select [(ngModel)]="selectedValue" name="addressType">
+                <mat-option>
+                    None
+                  </mat-option>
                 <mat-option *ngFor="let addressType of usuario.addressType" [value]="addressType.value">
                   {{addressType.viewValue}}
                 </mat-option>
@@ -41,8 +44,8 @@
                 <mat-hint align="end">{{input.value.length}}/10</mat-hint>
             </mat-form-field>
         </div>
-          <div>aki: {{selected}}</div>
     </div>
+
     
 </form>
 
@@ -88,7 +91,7 @@
     <app-form-debug [form]="f"></app-form-debug>
 </div>
 
-<mat-form-field class="example-full-width">
+<mat-form-field class="example-full-width example-form ">
     <mat-label>Email</mat-label>
     <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
            placeholder="Ex. pat@example.com">

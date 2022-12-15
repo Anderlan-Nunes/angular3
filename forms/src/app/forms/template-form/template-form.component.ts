@@ -20,8 +20,7 @@ interface Food {
   styleUrls: ['./template-form.component.css']
 })
 export class TemplateFormComponent implements OnInit {
-
-  selected = '';
+  selectedValue = 'vazio';
   addressTypes  : Food []=  [
     {value: 'home-0', viewValue: 'home'},
     {value: 'work-1', viewValue: 'work'},
