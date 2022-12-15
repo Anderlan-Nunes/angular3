@@ -9,6 +9,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-template-form',
   templateUrl: './template-form.component.html',
@@ -16,13 +21,20 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class TemplateFormComponent implements OnInit {
 
+  selected = '';
+  addressTypes  : Food []=  [
+    {value: 'home-0', viewValue: 'home'},
+    {value: 'work-1', viewValue: 'work'},
+    {value: 'parents-2', viewValue: 'parents'},
+    {value: 'outro-2', viewValue: 'outro'},
+  ];
 
 usuario: any = {
    nome : null,
    email : null,
-   name2: null,
-   email3: null
-
+   endereco: null,
+   email3: null,
+   addressType : this.addressTypes
 }
 
 emailFormControl= new FormControl('', [Validators.required, Validators.email]);
@@ -38,10 +50,9 @@ matcher = new MyErrorStateMatcher();
   onSubmit(form:any){
     console.log(this.usuario.nome)
     console.log(this.usuario.email)
+    console.log(this.usuario.endereco)
     console.log(form)
    
   }
-
-  
 
 }
