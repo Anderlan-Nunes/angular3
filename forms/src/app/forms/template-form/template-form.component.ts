@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+
 import {ErrorStateMatcher} from '@angular/material/core';
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -41,7 +45,7 @@ emailFormControl= new FormControl('', [Validators.required, Validators.email]);
 matcher = new MyErrorStateMatcher();
 
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -54,4 +58,22 @@ matcher = new MyErrorStateMatcher();
    
   }
 
+  consultaCep(cep: any){
+    //Nova variável "cep" somente com dígitos
+    cep = cep.replace(/\D/g, '');
+    //Verifica se campo cep possui valor informado.
+    if (cep != '' && cep != null ) {
+      //Expressão regular para validar o CEP.
+      let validacep = /^[0-9]{8}$/;
+        //Valida o formato do CEP.
+        if(validacep.test(cep)) {
+          //Consulta o webservice viacep.com.br/
+          this.http.get(`https://viacep.com.br/ws/${cep}/json/`)
+          .pipe(map(dados => dados))
+          .subscribe(dados => console.log(dados))
+        }
+    }
+
+    console.log(cep)
+  }
 }
