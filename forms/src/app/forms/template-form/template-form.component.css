@@ -47,3 +47,8 @@ button .matSuffix {
     margin-top: 30px;
     padding: 10px;
 }
+
+input:read-only {
+    cursor: not-allowed;
+
+}

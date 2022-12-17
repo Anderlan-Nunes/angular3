@@ -13,7 +13,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   }
 }
 
-interface Food {
+interface addressType {
   value: string;
   viewValue: string;
 }
@@ -25,7 +25,7 @@ interface Food {
 })
 export class TemplateFormComponent implements OnInit {
   selectedValue = 'vazio';
-  addressTypes  : Food []=  [
+  addressTypes  : addressType []=  [
     {value: 'home-0', viewValue: 'home'},
     {value: 'work-1', viewValue: 'work'},
     {value: 'parents-2', viewValue: 'parents'},
@@ -33,13 +33,9 @@ export class TemplateFormComponent implements OnInit {
   ];
 
 usuario: any = {
-   nome : null,
-   email : null,
-   endereco: null,
-   email3: null,
-   addressType : this.addressTypes
+  name: null,
+  email : null,
 }
-
 emailFormControl= new FormControl('', [Validators.required, Validators.email]);
 
 matcher = new MyErrorStateMatcher();
@@ -51,14 +47,12 @@ matcher = new MyErrorStateMatcher();
   }
 
   onSubmit(form:any){
-    console.log(this.usuario.nome)
-    console.log(this.usuario.email)
-    console.log(this.usuario.endereco)
+
     console.log(form)
    
   }
 
-  consultaCep(cep: any){
+  consultaCep(cep: any, form: any){
     //Nova variável "cep" somente com dígitos
     cep = cep.replace(/\D/g, '');
     //Verifica se campo cep possui valor informado.
@@ -69,11 +63,22 @@ matcher = new MyErrorStateMatcher();
         if(validacep.test(cep)) {
           //Consulta o webservice viacep.com.br/
           this.http.get(`https://viacep.com.br/ws/${cep}/json/`)
-          .pipe(map(dados => dados))
-          .subscribe(dados => console.log(dados))
+          .pipe(map((dados) => dados))
+          .subscribe(dados => this.populaDadosForm(dados, form))
         }
     }
+  }
 
-    console.log(cep)
+  populaDadosForm(dados: any, formulario: any){
+    formulario.form.patchValue({
+      endereco : {
+        address: dados.logradouro,
+        bairro: dados.bairro,
+        cidade: dados.localidade,
+        estado: dados.uf,
+        complemento: dados.complemento
+      }
+    })
+
   }
 }

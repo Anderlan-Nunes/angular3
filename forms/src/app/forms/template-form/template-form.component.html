@@ -31,46 +31,49 @@
                 <mat-option>
                     None
                   </mat-option>
-                <mat-option *ngFor="let addressType of usuario.addressType" [value]="addressType.value">
+                <mat-option *ngFor="let addressType of addressTypes" [value]="addressType.value">
                   {{addressType.viewValue}}
                 </mat-option>
               </mat-select>
               <mat-hint align="end">home, work, parents...</mat-hint>
             </mat-form-field>
 
-            <mat-form-field hintLabel="8 numbers" appearance="fill">
+            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
                 <mat-label>Cep:</mat-label>
-                <input type="text" name="cep" matInput #input maxlength="8" placeholder="72000000" ngModel  #cep="ngModel" (blur)="consultaCep(cep.value)">
-                <mat-hint align="end">{{input.value.length}}/8</mat-hint>
+                <input type="text" name="cep" matInput #input #cep="ngModel" maxlength="10" placeholder="70000000" ngModel (blur)="consultaCep(cep.value, f)">
+                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>address:</mat-label>
-                <input type="text" name="endereco" matInput #input placeholder="address" [(ngModel)]="usuario.endereco" >
+                <mat-label>Estado:</mat-label>
+                <input type="text" name="estado" matInput #estado="ngModel" ngModel readonly>
             </mat-form-field>
             
-            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+            <mat-form-field appearance="fill">
                 <mat-label>Cidade:</mat-label>
-                <input type="text" name="cidade" matInput #input maxlength="10" placeholder="Ex. Nougat" [(ngModel)]="usuario.cidade">
-                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
-            </mat-form-field>
-        
-            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
-                <mat-label>Bairro:</mat-label>
-                <input type="text" name="bairro" matInput #input maxlength="10" placeholder="Ex. Nougat" [(ngModel)]="usuario.bairro">
-                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+                <input type="text" name="cidade" matInput #cidade="ngModel" ngModel readonly="">
             </mat-form-field>
 
-            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+            <mat-form-field appearance="fill">
+                <mat-label>Address:</mat-label>
+                <input type="text" name="address" matInput #address="ngModel" placeholder="address" ngModel readonly>
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill">
+                <mat-label>bairro:</mat-label>
+                <input type="text" name="bairro" matInput #bairro="ngModel" placeholder="bairro" ngModel readonly>
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Max 30 characters" appearance="fill">
                 <mat-label>Complemento:</mat-label>
-                <input type="text" name="complemento" matInput #input maxlength="10" placeholder="Ex. Nougat" [(ngModel)]="usuario.complemento">
-                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+                <input type="text" name="complemento" matInput #message maxlength="30" placeholder="loja,casa,apto..." ngModel #complemento="ngModel" >
+                <mat-hint align="end">{{message.value.length}}/30</mat-hint>
             </mat-form-field>
 
             <mat-form-field hintLabel="Max 10 characters" appearance="fill">
                 <mat-label>Número:</mat-label>
-                <input type="text" name="numero" matInput #input maxlength="10" placeholder="Ex. Nougat" [(ngModel)]="usuario.numero">
-                <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+                <input type="text" name="numero" #tnumero matInput maxlength="10" ngModel #numero="ngModel">
+                <mat-hint align="end">{{tnumero.value.length}}/10</mat-hint>
             </mat-form-field>
         </div>
     </div>
