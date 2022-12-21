@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-data-form',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataFormComponent implements OnInit {
 
-  constructor() { }
+  formulario: FormGroup | any;
+  //formulario2?: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
+    this.formulario= this.formBuilder.group({
+      nome: [null],
+      email: [null]
+    })
   }
 
 }

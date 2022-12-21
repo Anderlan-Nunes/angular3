@@ -1,1 +1,26 @@
-<p>data-form works!</p>
+<form class="example-form" [formGroup]="formulario"> 
+    <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput placeholder="Digite seu nome completo">
+
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="Ex. pat@example.com">
+        </mat-form-field>
+    </div>
+
+    <div class="example-button-row">
+        <button mat-raised-button>Subimt</button>
+    </div>
+
+    <div>
+        <app-form-debug [form]="formulario"></app-form-debug>
+    </div>
+  </form>
+
+  <!--[formGroup]
+    eh o mesmo do nome da classe porém com eh uma diretiva inicia com letra minuscula-->

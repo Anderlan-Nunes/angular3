@@ -66,14 +66,14 @@
 
             <mat-form-field hintLabel="Max 30 characters" appearance="fill">
                 <mat-label>Complemento:</mat-label>
-                <input type="text" name="complemento" matInput #message maxlength="30" placeholder="loja,casa,apto..." ngModel #complemento="ngModel" >
-                <mat-hint align="end">{{message.value.length}}/30</mat-hint>
+                <input type="text" name="complemento" matInput maxlength="30" placeholder="loja,casa,apto..." ngModel #complemento="ngModel" >
+                <mat-hint align="end">{{complemento.value?.length}}/30</mat-hint>
             </mat-form-field>
 
             <mat-form-field hintLabel="Max 10 characters" appearance="fill">
                 <mat-label>Número:</mat-label>
-                <input type="text" name="numero" #tnumero matInput maxlength="10" ngModel #numero="ngModel">
-                <mat-hint align="end">{{tnumero.value.length}}/10</mat-hint>
+                <input type="text" name="numero" matInput maxlength="10" ngModel #numero="ngModel">
+                <mat-hint align="end">{{numero.value?.length}}/10</mat-hint>
             </mat-form-field>
         </div>
     </div>
