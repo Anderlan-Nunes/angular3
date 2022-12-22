@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs';
 
 @Component({
@@ -20,8 +20,9 @@ export class DataFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.formulario= this.formBuilder.group({
-      nome: [null],
-      email: [null]
+      nome: [null, Validators.required],
+      //email passa mais de um validção por isso usamos array
+      email: [null, [Validators.required, Validators.email]] 
     })
   }
 
@@ -31,10 +32,19 @@ export class DataFormComponent implements OnInit {
 
     this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
     .pipe(map((res: any) => res))
-    .subscribe((dados: any) => console.log(dados));
+    .subscribe({
+      next: (dados) => console.log(dados),
+      error: (e)=> console.error(e),
+      complete: () => this.resetar(),
+
+    })
+  
   }
 
   
+  resetar(){
+    this.formulario.reset();
+  }
 
 }
 
@@ -43,4 +53,21 @@ export class DataFormComponent implements OnInit {
     //   nome: new FormControl(null),
     //   email: new FormControl(null)
     // })
- */
+ 
+ * reset()
+    não colocar o reset antes do post .reset só depois q vim a mensagem de sucesso do post.   
+    logo que o response(console.log(dados)) ter a saída no console que o formulário vai ser 
+    limpo
+    */
+
+      /**
+   * this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+    .pipe(map((res: any) => res))
+    .subscribe((dados: any) => {
+      console.log(dados);
+      //reserta o form
+      this.resetar();
+    },
+    (error:any) => alert('erro')
+    )
+   */
